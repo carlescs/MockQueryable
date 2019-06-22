@@ -24,7 +24,7 @@ steps:
     projects: '**/*.csproj'
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: 'MockQuerable/bin' 
+    pathtoPublish: '**/*.nupkg' 
     artifactName: 'nugets' 
     publishLocation: 'container'
     targetPath: '/'
