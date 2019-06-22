@@ -22,9 +22,9 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-- task: PublishBuildArtifacts@1
+- task: NuGetCommand@2
   inputs:
-    pathtoPublish: '**/*.nupkg' 
-    artifactName: 'nugets' 
-    publishLocation: 'container'
-    targetPath: '/'
+    command: 'push'
+    packagesToPush: '**/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '/5324af86-2e6e-43a1-9a46-fa4852076561'
