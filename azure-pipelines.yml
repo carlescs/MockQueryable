@@ -20,6 +20,10 @@ steps:
     includePreviewVersions: true
 - task: DotNetCoreCLI@2
   inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+- task: DotNetCoreCLI@2
+  inputs:
     command: 'pack'
-    packagesToPack: '**/MockQueryable/*.csproj'
+    packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
