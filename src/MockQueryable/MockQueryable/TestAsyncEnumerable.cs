@@ -60,13 +60,14 @@ namespace MockQueryable
 			return new TestAsyncEnumerable<TResult>(expression);
 		}
 
-		public Task<TResult> ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken)
+		public TResult ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken)
 		{
-			return Task.FromResult(CompileExpressionItem<TResult>(expression));
+			return CompileExpressionItem<TResult>(expression);
 		}
 
 
-		IEnumerator<T> IEnumerable<T>.GetEnumerator()
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
 			if (_enumerable == null) _enumerable = CompileExpressionItem<IEnumerable<T>>(Expression);
 			return _enumerable.GetEnumerator();
@@ -91,5 +92,5 @@ namespace MockQueryable
 			var f = Expression.Lambda<Func<TResult>>(body, (IEnumerable<ParameterExpression>) null);
 			return f.Compile()();
 		}
-	}
+    }
 }
