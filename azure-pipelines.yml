@@ -22,8 +22,9 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-- task: DotNetCoreCLI@2
+- task: PublishBuildArtifacts@1
   inputs:
-    command: 'pack'
-    packagesToPack: '**/*.csproj'
-    versioningScheme: 'off'
+    pathtoPublish: 'MockQuerable/bin' 
+    artifactName: 'nugets' 
+    publishLocation: 'container'
+    targetPath: '/'
